@@ -9,7 +9,7 @@ function Filtry({ filtr, setFiltr }) {
 
   return (
     <>
-      <div>Pokaż postacie: {filtr}</div>
+      <h3>Filtruj postacie: {filtr}</h3>
       <select onChange={onChangeHandler}>
         {filters.map((item) => (
           <option selected={filtr === item} value={item}>

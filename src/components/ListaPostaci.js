@@ -16,19 +16,17 @@ const Karty = styled.div`
 function ListaPostaci({ postaci }) {
   return (
     <ListaKart>
-      {postaci.results
-        // .filter((item, index) => index < 40)
-        .map(({ name, species, image, status, gender }) => (
-          <Karty>
-            <KartaPostaci
-              name={name}
-              species={species}
-              image={image}
-              status={status}
-              gender={gender}
-            />
-          </Karty>
-        ))}
+      {postaci.results.map(({ name, species, image, status, gender }) => (
+        <Karty>
+          <KartaPostaci
+            name={name}
+            species={species}
+            image={image}
+            status={status}
+            gender={gender}
+          />
+        </Karty>
+      ))}
     </ListaKart>
   );
 }
