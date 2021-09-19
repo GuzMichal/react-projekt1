@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import KartaPostaci from "./KartaPostaci";
 
@@ -13,20 +13,32 @@ const Karty = styled.div`
   width: 30vw;
 `;
 
-function ListaPostaci({ postaci }) {
+function ListaPostaci({ postaci, filtr, switchState }) {
   return (
     <ListaKart>
-      {postaci.results.map(({ name, species, image, status, gender }) => (
-        <Karty>
-          <KartaPostaci
-            name={name}
-            species={species}
-            image={image}
-            status={status}
-            gender={gender}
-          />
-        </Karty>
-      ))}
+      {postaci.results
+        .filter((postac) => {
+          if (filtr === "Wszystkie") {
+            return true;
+          }
+          return postac.status === filtr;
+        })
+        .sort((a, b) => {
+          return switchState === true
+            ? a.name.localeCompare(b.name)
+            : b.name.localeCompare(a.name);
+        })
+        .map(({ name, species, image, status, gender }) => (
+          <Karty>
+            <KartaPostaci
+              name={name}
+              species={species}
+              image={image}
+              status={status}
+              gender={gender}
+            />
+          </Karty>
+        ))}
     </ListaKart>
   );
 }

@@ -5,7 +5,7 @@ function Filtry({ filtr, setFiltr }) {
     setFiltr(event.target.value);
   };
 
-  const filters = ["wszystkie", "alive", "dead", "unknown"];
+  const filters = ["Wszystkie", "Alive", "Dead", "unknown"];
 
   return (
     <>

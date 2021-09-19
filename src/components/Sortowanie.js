@@ -1,22 +1,25 @@
 import React, { useState } from "react";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
-function Sortowanie({ kierunek, pole }) {
-  const onChangeHandler = (event) => {
-    setFiltr(event.target.value);
+function Sortowanie({ switchState, setterSwitch }) {
+  const handleChange = (event) => {
+    setterSwitch(event.target.checked);
   };
-
-  const filters = ["wszystkie", "alive", "dead", "unknown"];
 
   return (
     <>
-      <div>Pokaż postacie: {filtr}</div>
-      <select onChange={onChangeHandler}>
-        {filters.map((item) => (
-          <option selected={filtr === item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={switchState.checked}
+            onChange={handleChange}
+            name="checked"
+            color="primary"
+          />
+        }
+        label="Sortowanie A-Z"
+      />
     </>
   );
 }
