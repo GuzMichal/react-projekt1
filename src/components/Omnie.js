@@ -20,8 +20,9 @@ const Img = styled.img`
   border-radius: 50%;
 `;
 
-const OmnieDiv = styled.h1`
+const OmnieDiv = styled.div`
   margin: 0;
+  font-size: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
