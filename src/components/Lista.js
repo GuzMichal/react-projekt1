@@ -5,6 +5,18 @@ import ListaPostaci from "./ListaPostaci";
 import Filtry from "./Filtry";
 import Sortowanie from "./Sortowanie";
 import { Button } from "@material-ui/core";
+import styled from "styled-components";
+
+const Nav = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 function Lista() {
   const [postaci, setPostaci] = useState(null);
@@ -37,32 +49,38 @@ function Lista() {
   return (
     <div>
       <h1>Lista {postaci.info.count} postaci z serialu Rick & Morty</h1>
-      <Filtry filtr={filtr} setFiltr={setFiltr} />
-      <Sortowanie switchState={switchState} setterSwitch={setSwitchState} />
-      <Button
-        variant="contained"
-        color="primary"
-        size="large"
-        style={{ position: "initial" }}
-        onClick={prev}
-      >
-        Poprzednia
-      </Button>
-      <h3>Jesteś na {page} stronie</h3>
-      <Button
-        variant="contained"
-        color="primary"
-        size="large"
-        style={{ position: "initial" }}
-        onClick={next}
-      >
-        Następna
-      </Button>
+      <Nav>
+        <Filtry filtr={filtr} setFiltr={setFiltr} />
+        <Sortowanie switchState={switchState} setterSwitch={setSwitchState} />
+        <h3>Jesteś na {page} stronie</h3>
+        <Buttons>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ position: "initial", margin: 5 }}
+            onClick={prev}
+          >
+            Poprzednia
+          </Button>
+
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ position: "initial", margin: 5 }}
+            onClick={next}
+          >
+            Następna
+          </Button>
+        </Buttons>
+      </Nav>
       <ListaPostaci
         postaci={postaci}
         filtr={filtr}
         switchState={switchState}
         setterSwitch={setSwitchState}
+        page={page}
       />
     </div>
   );

@@ -8,6 +8,7 @@ import Rej from "./components/Rej";
 import Log from "./components/Log";
 import Omnie from "./components/Omnie";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Character from "./components/Character";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/rej" component={Rej} />
           <Route path="/log" component={Log} />
           <Route path="/omnie" component={Omnie} />
+          <Route path="/:name/:id" children={<Character />} />
         </Switch>
       </div>
     </Router>

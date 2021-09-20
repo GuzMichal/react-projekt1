@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Character from "./Character";
 import KartaPostaci from "./KartaPostaci";
 
 const ListaKart = styled.div`
@@ -28,7 +29,7 @@ function ListaPostaci({ postaci, filtr, switchState }) {
             ? a.name.localeCompare(b.name)
             : b.name.localeCompare(a.name);
         })
-        .map(({ name, species, image, status, gender }) => (
+        .map(({ name, species, image, status, gender, id, page }) => (
           <Karty>
             <KartaPostaci
               name={name}
@@ -36,6 +37,8 @@ function ListaPostaci({ postaci, filtr, switchState }) {
               image={image}
               status={status}
               gender={gender}
+              id={id}
+              page={page}
             />
           </Karty>
         ))}

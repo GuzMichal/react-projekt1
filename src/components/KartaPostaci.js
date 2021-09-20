@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Character from "./Character";
 
 const Karta = styled.div`
   display: flex;
@@ -26,23 +28,39 @@ const Container = styled.div`
 const CharacterName = styled.h3`
   width: 10vw;
   margin: 5px 0;
+  color: black;
 `;
 
 const Paragraph = styled.p`
   margin: 5px 0;
+  color: black;
 `;
 
-function KartaPostaci({ name, image, species, status, gender }) {
+function KartaPostaci({ name, image, species, status, gender, id, page }) {
   return (
-    <Karta data-name={name}>
-      <Img src={image} alt={name} />
-      <Container>
-        <CharacterName>{name}</CharacterName>
-        <Paragraph>{species}</Paragraph>
-        <Paragraph>{status}</Paragraph>
-        <Paragraph>{gender}</Paragraph>
-      </Container>
-    </Karta>
+    <>
+      <Link to={`/${name}/${id}/`} style={{ textDecoration: "none" }}>
+        <Karta data-name={name}>
+          <Img src={image} alt={name} />
+          <Container>
+            <CharacterName>{name}</CharacterName>
+            {console.log({ name })}
+            <Paragraph>{species}</Paragraph>
+            <Paragraph>{status}</Paragraph>
+            <Paragraph>{gender}</Paragraph>
+          </Container>
+        </Karta>
+      </Link>
+      <Character
+        name={name}
+        species={species}
+        image={image}
+        status={status}
+        gender={gender}
+        id={id}
+        page={page}
+      />
+    </>
   );
 }
 
