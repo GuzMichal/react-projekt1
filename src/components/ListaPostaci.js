@@ -29,7 +29,7 @@ function ListaPostaci({ postaci, filtr, switchState }) {
             : b.name.localeCompare(a.name);
         })
         .map(({ name, species, image, status, gender, id, page }) => (
-          <Karty>
+          <Karty key={id}>
             <KartaPostaci
               name={name}
               species={species}

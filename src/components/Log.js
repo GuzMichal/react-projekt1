@@ -42,7 +42,6 @@ const SButton = styled(Button)`
 `;
 
 function Log() {
-  const [users, setUsers] = useState(null);
   const [email, setEmail] = useState(null);
   const [isEmailInData, setIsEmailInData] = useState(false);
   const [pass, setPass] = useState(null);
@@ -52,8 +51,6 @@ function Log() {
 
   useEffect(() => {
     axios.get("http://localhost:3000/users").then((result) => {
-      setUsers(result.data);
-
       const isUserInData = result.data
         .map((item) => item.email)
         .includes(email);

@@ -12,7 +12,7 @@ function Filtry({ filtr, setFiltr }) {
       <h3>Filtruj postacie: {filtr}</h3>
       <select onChange={onChangeHandler}>
         {filters.map((item) => (
-          <option selected={filtr === item} value={item}>
+          <option key={item} defaultChecked={filtr === item} value={item}>
             {item}
           </option>
         ))}
