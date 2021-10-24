@@ -13,6 +13,13 @@
       "email": "michal@test.pl",
       "password": "haslo123",
       "id": 2
+    },
+    {
+      "name": "Kasia",
+      "lastName": "Żona",
+      "email": "moja@zona.pl",
+      "password": "kasiunia",
+      "id": 3
     }
   ]
 }
