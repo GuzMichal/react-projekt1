@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 

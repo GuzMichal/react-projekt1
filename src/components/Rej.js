@@ -16,7 +16,7 @@ const RejDiv = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   background-color: white;
   width: 70vw;
   height: 100%;
@@ -28,6 +28,18 @@ const Formularz = styled.div`
   width: 30vw;
   align-items: center;
   margin: auto;
+`;
+
+const STextField = styled(TextField)`
+  && {
+    margin: 2px;
+  }
+`;
+
+const SButton = styled(Button)`
+  && {
+    margin: 2px;
+  }
 `;
 
 function Rej() {
@@ -53,21 +65,21 @@ function Rej() {
         <form>
           <h1>Zarejestruj się już dziś !</h1>
           <Formularz>
-            <TextField
+            <STextField
               variant="outlined"
               placeholder="Imię"
               color="primary"
               size="small"
               onChange={(e) => setNameReg(e.target.value)}
             />
-            <TextField
+            <STextField
               variant="outlined"
               placeholder="Nazwisko"
               color="primary"
               size="small"
               onChange={(e) => setLastName(e.target.value)}
             />
-            <TextField
+            <STextField
               type="email"
               variant="outlined"
               placeholder="E-mail"
@@ -75,7 +87,7 @@ function Rej() {
               size="small"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextField
+            <STextField
               type="password"
               variant="outlined"
               placeholder="Hasło"
@@ -83,14 +95,14 @@ function Rej() {
               size="small"
               onChange={(e) => setPass(e.target.value)}
             />
-            <Button
+            <SButton
               variant="contained"
               color="primary"
               size="large"
               onClick={addUser}
             >
               Zarejestruj
-            </Button>
+            </SButton>
           </Formularz>
         </form>
       </RejDiv>

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import Character from "./Character";
 import KartaPostaci from "./KartaPostaci";
 
 const ListaKart = styled.div`

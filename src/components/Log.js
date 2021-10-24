@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Button, TextField } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const Background = styled.div`
   display: flex;
@@ -28,15 +29,53 @@ const Logowanie = styled.div`
   align-items: center;
 `;
 
+const STextField = styled(TextField)`
+  && {
+    margin: 2px;
+  }
+`;
+
+const SButton = styled(Button)`
+  && {
+    margin: 2px;
+  }
+`;
+
 function Log() {
   const [users, setUsers] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [isEmailInData, setIsEmailInData] = useState(false);
+  const [pass, setPass] = useState(null);
+  const [isPassCorrect, setIsPassCorrect] = useState(false);
+
+  let history = useHistory();
 
   useEffect(() => {
     axios.get("http://localhost:3000/users").then((result) => {
-      console.log("result", result.data);
       setUsers(result.data);
+
+      const isUserInData = result.data
+        .map((item) => item.email)
+        .includes(email);
+      setIsEmailInData(isUserInData);
+
+      const isPassInData = result.data
+        .map((item) => item.password)
+        .includes(pass);
+      setIsPassCorrect(isPassInData);
     });
-  }, []);
+  }, [email, pass]);
+
+  const handleLogin = () => {
+    if (isEmailInData === false)
+      return alert(
+        "Brak użytkownika o tym adresie E-mail. Zarejestruj się i spróbuj ponownie."
+      );
+    else if (isEmailInData === true && isPassCorrect === false)
+      return alert("Wprowadzono błędne hasło");
+    else if (isEmailInData === true && isPassCorrect === true)
+      history.push("/success");
+  };
 
   return (
     <Background>
@@ -44,23 +83,30 @@ function Log() {
         <h1>Logowanie</h1>
         <Logowanie>
           <h1>Zaloguj się do swojego konta</h1>
-          <TextField
+          <STextField
             type="email"
             variant="outlined"
             placeholder="Wpisz e-mail"
             color="primary"
             size="small"
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <TextField
+          <STextField
             type="password"
             variant="outlined"
             placeholder="Wpisz hasło"
             color="primary"
             size="small"
+            onChange={(e) => setPass(e.target.value)}
           />
-          <Button variant="contained" color="primary" size="large">
+          <SButton
+            onClick={handleLogin}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
             Zaloguj się
-          </Button>
+          </SButton>
         </Logowanie>
       </LogDiv>
     </Background>
