@@ -38,11 +38,6 @@ const Opis = styled.h3`
   margin-bottom: 50px;
 `;
 
-const SearchInput = styled.div`
-  margin: 10px;
-  position: unset;
-`;
-
 const SearchButton = styled.div`
   margin: 10px;
   position: unset;
@@ -82,6 +77,11 @@ const ContainerTitle = styled.div`
 
 const ContainerDesc = styled.div``;
 
+const STextField = styled(TextField)`
+  display: flex;
+  margin: 10px;
+`;
+
 function Main() {
   return (
     <Body>
@@ -91,22 +91,18 @@ function Main() {
           Strona ma pokazać zdobyte umiejętności w tworzeniu stron internetowych
         </Opis>
         <SearchEngine>
-          <SearchInput>
-            <TextField
-              variant="outlined"
-              placeholder="Wyszukiwarka"
-              color="primary"
-              size="small"
-              style={{ position: "initial" }}
-            />
-          </SearchInput>
+          <STextField
+            variant="outlined"
+            placeholder="Wyszukiwarka"
+            color="primary"
+            size="small"
+          />
           <SearchButton>
             <Button
               onClick={() => alert("Błąd")}
               variant="contained"
               color="primary"
               size="large"
-              style={{ position: "initial" }}
             >
               Wyszukaj...
             </Button>

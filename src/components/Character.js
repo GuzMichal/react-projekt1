@@ -29,6 +29,7 @@ const SLink = styled(Link)`
   display: flex;
   align-items: flex-start;
   margin: 10px;
+  text-decoration: none;
 `;
 
 const SpecBox = styled.div`
@@ -44,6 +45,9 @@ const Spec = styled.div`
   align-items: center;
   width: 50vw;
 `;
+const Img = styled.img`
+  border-radius: 50%;
+`;
 
 function Character({ match }) {
   const [info, setInfo] = useState([]);
@@ -58,23 +62,15 @@ function Character({ match }) {
     loadInfo();
   }, [match.params.id]);
 
-  console.log(info);
-  console.log(info.origin?.name);
-
   return (
     <Background>
       <CharDiv data-name={info.name}>
-        <SLink
-          to={"/lista"}
-          style={{
-            textDecoration: "none",
-          }}
-        >
+        <SLink to={"/lista"}>
           <Button variant="contained" color="primary" size="large">
             Powrót
           </Button>
         </SLink>
-        <img src={info.image} alt={info.name} />
+        <Img src={info.image} alt={info.name} />
         <h1>{info.name}</h1>
         <SpecBox>
           <Spec>Species: {info.species}</Spec>

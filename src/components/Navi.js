@@ -11,6 +11,7 @@ const Nav = styled.div`
   width: 100%;
   height: 75px;
   background: linear-gradient(45deg, rgb(0, 0, 139), #8080ff);
+  z-index: 1;
 `;
 
 const List = styled.ul`
